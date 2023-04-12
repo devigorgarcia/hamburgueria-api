@@ -1,7 +1,10 @@
 import { Router } from "express";
 import { validatedDataMiddleware } from "../middlewares/validatedData.middleware";
 import { createMenuItemSchema } from "../schemas/menuItem.schemas";
-import { createMenuItemController } from "../controllers/menuItem.controllers";
+import {
+  createMenuItemController,
+  listMenuItemController,
+} from "../controllers/menuItem.controllers";
 
 const routes = Router();
 
@@ -11,6 +14,7 @@ export const menuItemRoutes = () => {
     validatedDataMiddleware(createMenuItemSchema),
     createMenuItemController
   );
+  routes.get("", listMenuItemController);
 
-  return routes
+  return routes;
 };
