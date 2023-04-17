@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { createUserService } from "../services/users/createUser.service";
+import { listUsersService } from "../services/users/listUsers.service";
 
 export const createUserController = async (req: Request, res: Response) => {
   const data = req.body;
@@ -7,4 +8,10 @@ export const createUserController = async (req: Request, res: Response) => {
   const newUser = await createUserService(data);
 
   return res.status(201).json(newUser);
+};
+
+export const listUsersController = async (req: Request, res: Response) => {
+  const listUsers = await listUsersService();
+
+  return res.json(listUsers);
 };

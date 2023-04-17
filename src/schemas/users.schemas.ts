@@ -13,6 +13,11 @@ export const baseUserSchema = z.object({
   orders: z.array(baseOrderSchema),
 });
 
+const usersListDataWithNoPassword = baseUserSchema.omit({
+  password: true,
+  orders: true,
+});
+
 export const createUserSchema = z.object({
   name: z.string(),
   email: z.string().email(),
@@ -33,3 +38,5 @@ export const createUserSchema = z.object({
 export const returnCreateUserSchema = createUserSchema.omit({
   password: true,
 });
+
+export const listUsersSchema = z.array(usersListDataWithNoPassword);

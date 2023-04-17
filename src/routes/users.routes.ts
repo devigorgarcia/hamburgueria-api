@@ -1,5 +1,8 @@
 import { Router } from "express";
-import { createUserController } from "../controllers/users.controller";
+import {
+  createUserController,
+  listUsersController,
+} from "../controllers/users.controller";
 
 import { createUserSchema } from "../schemas/users.schemas";
 import { ensureUserExists } from "../middlewares/ensureUserExists.middleware";
@@ -14,6 +17,8 @@ export const usersRoutes = () => {
     ensureUserExists,
     createUserController
   );
+
+  routes.get("", listUsersController);
 
   return routes;
 };
