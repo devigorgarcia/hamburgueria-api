@@ -66,3 +66,9 @@ export const completeOrderSchema = z.array(
     deliveryAddress: addressSchema,
   })
 );
+
+export const updateOrderSchema = z.object({
+  orderId: z.string(),
+  orderConfirm: z.boolean().optional(),
+  finishedOrder: z.boolean().optional(),
+});
