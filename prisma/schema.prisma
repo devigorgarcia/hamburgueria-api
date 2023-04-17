@@ -8,9 +8,9 @@ generator client {
 }
 
 model User {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   name        String
-  email       String   @unique
+  email       String    @unique
   password    String
   phoneNumber String
   isAdmin     Boolean
@@ -19,52 +19,53 @@ model User {
 }
 
 model Address {
-  id      String  @id @default(uuid())
-  street  String
-  city    String
-  state   String
-  zip     String
-  userId  String
-  user    User    @relation(fields: [userId], references: [id])
+  id     String @id @default(uuid())
+  street String
+  city   String
+  state  String
+  zip    String
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
 }
 
 model Order {
-  id               String    @id @default(uuid())
-  orderNumber      Int
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
-  paymentMethod    String
-  deliveryAddress  Json
-  orderConfirm     Boolean   @default(false)
-  finishedOrder    Boolean   @default(false)
-  userId           String
-  user             User      @relation(fields: [userId], references: [id])
-  orderItems       OrderItem[]
+  id              String      @id @default(uuid())
+  orderNumber     Int
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  paymentMethod   String
+  deliveryAddress Json
+  orderConfirm    Boolean     @default(false)
+  finishedOrder   Boolean     @default(false)
+  userId          String
+  user            User        @relation(fields: [userId], references: [id])
+  orderItems      OrderItem[]
 }
 
 model Category {
-  id        String      @id @default(uuid())
+  id        String     @id @default(uuid())
   name      String
   menuItems MenuItem[]
 }
 
 model OrderItem {
-  id          String    @id @default(uuid())
-  quantity    Int
-  total       Float
+  id           String   @id @default(uuid())
+  quantity     Int
+  total        Float
   instructions String
-  orderId     String
-  order       Order     @relation(fields: [orderId], references: [id])
-  menuItemId  String
-  menuItem    MenuItem  @relation(fields: [menuItemId], references: [id])
+  orderId      String
+  order        Order    @relation(fields: [orderId], references: [id])
+  menuItemId   String
+  menuItem     MenuItem @relation(fields: [menuItemId], references: [id])
 }
 
 model MenuItem {
-  id          String    @id @default(uuid())
+  id          String      @id @default(uuid())
   name        String
   price       Float
+  imageURL    String
   description String
   categoryId  String
-  category    Category  @relation(fields: [categoryId], references: [id])
+  category    Category    @relation(fields: [categoryId], references: [id])
   orderItems  OrderItem[]
 }
