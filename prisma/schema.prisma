@@ -19,13 +19,14 @@ model User {
 }
 
 model Address {
-  id     String @id @default(uuid())
-  street String
-  city   String
-  state  String
-  zip    String
-  userId String
-  user   User   @relation(fields: [userId], references: [id])
+  id        String  @id @default(uuid())
+  street    String
+  city      String
+  state     String
+  zip       String
+  userId    String
+  preferred Boolean @default(false)
+  user      User    @relation(fields: [userId], references: [id])
 }
 
 model Order {
@@ -52,9 +53,9 @@ model OrderItem {
   id           String   @id @default(uuid())
   quantity     Int
   total        Float
-  instructions String
+  instructions String?
   orderId      String
-  order        Order    @relation(fields: [orderId], references: [id])
+  order        Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
   menuItemId   String
   menuItem     MenuItem @relation(fields: [menuItemId], references: [id])
 }
