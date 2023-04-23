@@ -4,6 +4,7 @@ import { createMenuItemSchema } from "../schemas/menuItem.schemas";
 import {
   createMenuItemController,
   listMenuItemController,
+  listMenuItemDetailController,
 } from "../controllers/menuItem.controllers";
 
 const routes = Router();
@@ -15,6 +16,7 @@ export const menuItemRoutes = () => {
     createMenuItemController
   );
   routes.get("", listMenuItemController);
+  routes.get("/:id", listMenuItemDetailController);
 
   return routes;
 };
