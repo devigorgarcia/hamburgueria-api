@@ -7,6 +7,8 @@ import {
 import { createUserSchema } from "../schemas/users.schemas";
 import { ensureUserExists } from "../middlewares/ensureUserExists.middleware";
 import { validatedDataMiddleware } from "../middlewares/validatedData.middleware";
+import { ensureTokenMiddleware } from "../middlewares/ensureToken.middleware";
+import { ensureIsAdminMiddleware } from "../middlewares/ensureIsAdmin.middleware";
 
 const routes = Router();
 
@@ -18,7 +20,12 @@ export const usersRoutes = () => {
     createUserController
   );
 
-  routes.get("", listUsersController);
+  routes.get(
+    "",
+    ensureTokenMiddleware,
+    ensureIsAdminMiddleware,
+    listUsersController
+  );
 
   return routes;
 };
