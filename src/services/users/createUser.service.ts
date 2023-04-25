@@ -19,6 +19,7 @@ export const createUserService = async (data: ICreateUser) => {
             city: address.city,
             state: address.state,
             zip: address.zip,
+            complement: address.complement,
             preferred: address.preferred ? address.preferred : false,
           };
         }),

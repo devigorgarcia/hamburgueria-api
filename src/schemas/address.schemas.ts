@@ -6,6 +6,7 @@ export const baseAddressSchema = z.object({
   city: z.string(),
   state: z.string(),
   zip: z.string(),
+  complement: z.string(),
   preferred: z.boolean(),
   userId: z.string(),
 });
@@ -15,5 +16,6 @@ export const createAddressSchema = z.object({
   city: z.string(),
   state: z.string(),
   zip: z.string(),
+  complement: z.string(),
   preferred: z.boolean(),
 });
