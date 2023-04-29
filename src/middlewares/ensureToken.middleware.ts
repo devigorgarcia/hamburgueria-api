@@ -10,7 +10,7 @@ export const ensureTokenMiddleware = async (
   let token = req.headers.authorization;
 
   if (!token) {
-    throw new AppError("Token is missing", 400);
+    throw new AppError("Token is missing", 401);
   }
 
   token = token.split(" ")[1];

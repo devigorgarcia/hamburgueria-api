@@ -5,6 +5,6 @@ export const loginController = async (req: Request, res: Response) => {
   const data = req.body;
 
   const token = await loginService(data);
-  console.log(token)
+    
   return res.json({ token });
 };

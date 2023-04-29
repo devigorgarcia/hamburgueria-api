@@ -6,6 +6,10 @@ export const listMenuItemDetailService = async (id: string) => {
     where: {
       id,
     },
+    include: {
+      category: true,
+      orderItems: true,
+    },
   });
 
   if (!menuItem) {

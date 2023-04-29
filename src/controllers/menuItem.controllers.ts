@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { createMenuItemService } from "../services/menuItem/createMenuItem.service";
 import { listMenuItensService } from "../services/menuItem/listMenuItens.service";
 import { listMenuItemDetailService } from "../services/menuItem/listMenuItemDetail.service";
+import { updateMenuItemService } from "../services/menuItem/updateMenuItem.service";
 
 export const createMenuItemController = async (req: Request, res: Response) => {
   const data = req.body;
@@ -28,4 +29,13 @@ export const listMenuItemDetailController = async (
   const menuItemDetail = await listMenuItemDetailService(id);
 
   return res.json(menuItemDetail);
+};
+
+export const updateMenuItemController = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const data = req.body;
+
+  const updateMenuItem = await updateMenuItemService(data, id);
+
+  return res.json(updateMenuItem);
 };

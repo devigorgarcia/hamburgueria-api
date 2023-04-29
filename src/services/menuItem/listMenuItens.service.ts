@@ -21,7 +21,6 @@ export const listMenuItensService = async ({ category }: any) => {
     where: whereClause,
     include: {
       category: true,
-      orderItems: true,
     },
   });
 
