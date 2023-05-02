@@ -3,6 +3,7 @@ import { createMenuItemService } from "../services/menuItem/createMenuItem.servi
 import { listMenuItensService } from "../services/menuItem/listMenuItens.service";
 import { listMenuItemDetailService } from "../services/menuItem/listMenuItemDetail.service";
 import { updateMenuItemService } from "../services/menuItem/updateMenuItem.service";
+import { deleteMenuItemService } from "../services/menuItem/deleteMenuItem.service";
 
 export const createMenuItemController = async (req: Request, res: Response) => {
   const data = req.body;
@@ -38,4 +39,12 @@ export const updateMenuItemController = async (req: Request, res: Response) => {
   const updateMenuItem = await updateMenuItemService(data, id);
 
   return res.json(updateMenuItem);
+};
+
+export const deleteMenuItemController = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await deleteMenuItemService(id);
+
+  res.status(204).json();
 };

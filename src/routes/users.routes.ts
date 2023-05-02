@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createUserController,
+  listUserDetailsController,
   listUsersController,
 } from "../controllers/users.controller";
 
@@ -26,6 +27,8 @@ export const usersRoutes = () => {
     ensureIsAdminMiddleware,
     listUsersController
   );
+
+  routes.get("/:id", ensureTokenMiddleware, listUserDetailsController);
 
   return routes;
 };

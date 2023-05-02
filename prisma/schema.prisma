@@ -27,7 +27,7 @@ model Address {
   complement String
   userId     String
   preferred  Boolean @default(false)
-  user       User    @relation(fields: [userId], references: [id])
+  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Order {

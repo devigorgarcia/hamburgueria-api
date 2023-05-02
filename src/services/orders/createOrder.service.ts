@@ -3,7 +3,7 @@ import { AppError } from "../../errors";
 import { ICreateOrder } from "../../interfaces/orders.interfaces";
 
 export const createOrderService = async (orderData: ICreateOrder) => {
-  const { userId, orderItems, deliveryAddressId } = orderData;
+  const { userId, orderItems } = orderData;
 
   const user = await prisma.user.findUnique({
     where: {
@@ -29,7 +29,7 @@ export const createOrderService = async (orderData: ICreateOrder) => {
 
   const address = await prisma.address.findFirst({
     where: {
-      id: deliveryAddressId,
+      id: orderData.deliveryAddressId,
     },
   });
 
@@ -37,9 +37,11 @@ export const createOrderService = async (orderData: ICreateOrder) => {
     throw new AppError("Endereço não existe", 404);
   }
 
+  const { deliveryAddressId, ...rest } = orderData;
+
   const newOrder = await prisma.order.create({
     data: {
-      ...orderData,
+      ...rest,
       deliveryAddress: address,
       orderItems: {
         create: orderData.orderItems.map((item) => ({
@@ -54,4 +56,3 @@ export const createOrderService = async (orderData: ICreateOrder) => {
 
   return newOrder;
 };
-

@@ -20,6 +20,7 @@ export const ensureTokenMiddleware = async (
     process.env.SECRET_KEY as string,
     (error: any, decoded: any) => {
       if (error) {
+        console.log(error);
         throw new AppError("Invalid Token", 400);
       }
 

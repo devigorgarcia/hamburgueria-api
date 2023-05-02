@@ -31,6 +31,7 @@ export const ordersRoutes = () => {
   routes.patch(
     "/statusOrder",
     ensureTokenMiddleware,
+    ensureIsAdminMiddleware,
     validatedDataMiddleware(updateOrderSchema),
     updateOrderStatusController
   );

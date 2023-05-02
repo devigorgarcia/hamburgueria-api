@@ -3,6 +3,7 @@ import { validatedDataMiddleware } from "../middlewares/validatedData.middleware
 import { createMenuItemSchema } from "../schemas/menuItem.schemas";
 import {
   createMenuItemController,
+  deleteMenuItemController,
   listMenuItemController,
   listMenuItemDetailController,
   updateMenuItemController,
@@ -29,6 +30,12 @@ export const menuItemRoutes = () => {
     ensureIsAdminMiddleware,
     validatedDataMiddleware(MenuItemUpdateInputSchema),
     updateMenuItemController
+  );
+  routes.delete(
+    "/:id",
+    ensureTokenMiddleware,
+    ensureIsAdminMiddleware,
+    deleteMenuItemController
   );
 
   return routes;

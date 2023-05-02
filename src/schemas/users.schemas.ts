@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { baseOrderSchema } from "./orders.schemas";
+import { baseOrderSchema, orderDataSchema } from "./orders.schemas";
 import { baseAddressSchema, createAddressSchema } from "./address.schemas";
 
 export const baseUserSchema = z.object({
@@ -13,9 +13,8 @@ export const baseUserSchema = z.object({
   orders: z.array(baseOrderSchema),
 });
 
-const usersListDataWithNoPassword = baseUserSchema.omit({
+export const usersListDataWithNoPassword = baseUserSchema.omit({
   password: true,
-  orders: true,
 });
 
 export const createUserSchema = z.object({
@@ -35,8 +34,17 @@ export const createUserSchema = z.object({
     .nonempty("At least one address is required"),
 });
 
-export const returnCreateUserSchema = createUserSchema.omit({
+export const  returnCreateUserSchema = baseUserSchema.omit({
   password: true,
+  orders: true,
 });
 
 export const listUsersSchema = z.array(usersListDataWithNoPassword);
+
+export const listUserDetailsSchema = baseUserSchema
+  .omit({
+    password: true,
+  })
+  .extend({
+    orders: z.array(orderDataSchema),
+  });

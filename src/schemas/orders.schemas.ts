@@ -17,6 +17,10 @@ export const baseOrderSchema = z.object({
 export const createOrderSchema = baseOrderSchema
   .omit({
     id: true,
+    createdAt: true,
+    updatedAt: true,
+    orderConfirm: true,
+    finishedOrder:   true,
   })
   .extend({
     orderItems: z.array(createOrderItem),
