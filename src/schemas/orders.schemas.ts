@@ -20,7 +20,7 @@ export const createOrderSchema = baseOrderSchema
     createdAt: true,
     updatedAt: true,
     orderConfirm: true,
-    finishedOrder:   true,
+    finishedOrder: true,
   })
   .extend({
     orderItems: z.array(createOrderItem),
@@ -38,6 +38,7 @@ const addressSchema = z.object({
   zip: z.string(),
   city: z.string(),
   state: z.string(),
+  complement: z.string(),
   street: z.string(),
   preferred: z.boolean(),
 });
