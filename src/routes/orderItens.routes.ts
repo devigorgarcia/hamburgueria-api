@@ -1,8 +1,9 @@
+import { ensureTokenMiddleware } from "./../middlewares/ensureToken.middleware";
 import { Router } from "express";
-import { ensureTokenMiddleware } from "../middlewares/ensureToken.middleware";
 import {
-  listOrderItemDetails,
+  listOrderItemDetailsController,
   listOrderItensController,
+  updateOrderItemController,
 } from "../controllers/orderItens.controllers";
 
 const routes = Router();
@@ -10,7 +11,9 @@ const routes = Router();
 export const orderItensRoutes = () => {
   routes.get("", ensureTokenMiddleware, listOrderItensController);
 
-  routes.get("/:id", ensureTokenMiddleware, listOrderItemDetails);
+  routes.get("/:id", ensureTokenMiddleware, listOrderItemDetailsController);
+
+  routes.patch("/:id", ensureTokenMiddleware, updateOrderItemController);
 
   return routes;
 };
