@@ -15,6 +15,7 @@ export const baseUserSchema = z.object({
 
 export const usersListDataWithNoPassword = baseUserSchema.omit({
   password: true,
+  orders: true,
 });
 
 export const createUserSchema = z.object({
@@ -34,7 +35,7 @@ export const createUserSchema = z.object({
     .nonempty("At least one address is required"),
 });
 
-export const  returnCreateUserSchema = baseUserSchema.omit({
+export const returnCreateUserSchema = baseUserSchema.omit({
   password: true,
   orders: true,
 });

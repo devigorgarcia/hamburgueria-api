@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   createUserController,
   listUserDetailsController,
+  listUserProfileController,
   listUsersController,
 } from "../controllers/users.controller";
 
@@ -28,6 +29,7 @@ export const usersRoutes = () => {
     listUsersController
   );
 
+  routes.get("/profile", ensureTokenMiddleware, listUserProfileController);
   routes.get("/:id", ensureTokenMiddleware, listUserDetailsController);
 
   return routes;

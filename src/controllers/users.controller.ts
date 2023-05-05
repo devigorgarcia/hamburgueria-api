@@ -27,3 +27,14 @@ export const listUserDetailsController = async (
 
   return res.json(userDetails);
 };
+
+export const listUserProfileController = async (
+  req: Request,
+  res: Response
+) => {
+  const { id } = req.user;
+
+  const userProfile = await listUserDetailsService(id);
+
+  return res.json(userProfile);
+};
