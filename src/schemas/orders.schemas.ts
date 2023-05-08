@@ -9,6 +9,7 @@ export const baseOrderSchema = z.object({
   paymentMethod: z.string(),
   deliveryAddressId: z.string(),
   orderConfirm: z.boolean(),
+  confirmDelivery: z.boolean(),
   finishedOrder: z.boolean(),
   userId: z.string(),
   orderItems: z.array(baseOrderItem),
@@ -21,6 +22,7 @@ export const createOrderSchema = baseOrderSchema
     updatedAt: true,
     orderConfirm: true,
     finishedOrder: true,
+    confirmDelivery: true,
   })
   .extend({
     orderItems: z.array(createOrderItem),
@@ -64,6 +66,7 @@ export const orderDataSchema = z.object({
   paymentMethod: z.string(),
   orderConfirm: z.boolean(),
   finishedOrder: z.boolean(),
+  confirmDelivery: z.boolean(),
   orderItems: z.array(orderItemSchema),
   user: userSchema,
   deliveryAddress: addressSchema,
@@ -75,4 +78,5 @@ export const updateOrderSchema = z.object({
   orderId: z.string(),
   orderConfirm: z.boolean().optional(),
   finishedOrder: z.boolean().optional(),
+  confirmDelivery: z.boolean().optional(),
 });

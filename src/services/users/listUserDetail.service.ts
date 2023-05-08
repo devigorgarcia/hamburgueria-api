@@ -9,7 +9,11 @@ export const listUserDetailsService = async (id: string) => {
       addresses: true,
       orders: {
         include: {
-          orderItems: true,
+          orderItems: {
+            include: {
+              menuItem: true,
+            },
+          },
         },
       },
     },

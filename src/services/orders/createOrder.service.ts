@@ -39,8 +39,6 @@ export const createOrderService = async (orderData: ICreateOrder) => {
 
   const { deliveryAddressId, ...rest } = orderData;
 
-  console.log(address);
-
   const newOrder = await prisma.order.create({
     data: {
       ...rest,

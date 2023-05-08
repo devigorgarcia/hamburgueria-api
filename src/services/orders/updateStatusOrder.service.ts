@@ -20,6 +20,9 @@ export const updateStatusOrderService = async (data: IUpdateStatus) => {
     ...(data.finishedOrder !== undefined
       ? { finishedOrder: data.finishedOrder }
       : {}),
+    ...(data.confirmDelivery !== undefined
+      ? { confirmDelivery: data.confirmDelivery }
+      : {}),
   };
 
   const updateOrder = await prisma.order.update({

@@ -35,5 +35,5 @@ export const loginService = async (data: ILoginData) => {
     }
   );
 
-  return token;
+  return { token, isAdmin: user.isAdmin };
 };
