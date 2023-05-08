@@ -19,7 +19,7 @@ yarn.lock
 package-lock.json
 
 # Build files
-*.d.ts
+
 *.js.map
 *.js
 
