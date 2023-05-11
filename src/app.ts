@@ -8,11 +8,7 @@ import { appRoutes } from "./routes";
 export const prisma = new PrismaClient();
 
 const app: Application = express();
-app.use(
-  cors({
-    origin: "https://downtownhamburgueria.onrender.com/",
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 
