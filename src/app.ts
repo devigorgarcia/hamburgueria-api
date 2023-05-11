@@ -10,9 +10,7 @@ export const prisma = new PrismaClient();
 const app: Application = express();
 app.use(
   cors({
-    origin: "https://downtownhamburgueria.onrender.com",
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    origin: "https://downtownhamburgueria.onrender.com/",
   })
 );
 
