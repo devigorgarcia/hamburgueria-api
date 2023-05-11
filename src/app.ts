@@ -8,7 +8,17 @@ import { appRoutes } from "./routes";
 export const prisma = new PrismaClient();
 
 const app: Application = express();
-
+app.use((req: Request, res: Response) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, PUT, POST, DELETE, PATCH, OPTIONS"
+  );
+});
 app.use(cors());
 
 app.use(express.json());
