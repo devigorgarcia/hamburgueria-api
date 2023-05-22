@@ -23,7 +23,6 @@ services:
       - "POSTGRES_USER=igorg"
       - "POSTGRES_PASSWORD=I8gor291*"
       - "POSTGRES_DB=hamburgueria_db"
-      - "POSGRES_HOST="db-downtown.cjc9mjyajtux.sa-east-1.rds.amazonaws.com"
     ports:
       - "5433:5432"
     volumes:
