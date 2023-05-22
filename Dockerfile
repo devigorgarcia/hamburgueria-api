@@ -12,10 +12,11 @@ RUN npm install
 # If you are building your code for production
 # RUN npm ci --omit=dev
 
+
 # Bundle app source
 COPY . .
 
-RUN npx prisma generate
+RUN npx prisma migrate deploy
 
 RUN npm run build
 
