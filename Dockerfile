@@ -12,14 +12,12 @@ RUN npm install
 # If you are building your code for production
 # RUN npm ci --omit=dev
 
-RUN npm install -g @prisma/cli
-
 # Bundle app source
 COPY . .
 
-RUN npm run build
-
 RUN npx prisma generate
+
+RUN npm run build
 
 EXPOSE 3000
 
